@@ -39,14 +39,11 @@ export async function addPost(prevState: PostFormState, formData: FormData) {
 
   const { title } = validateField.data;
   try {
-    const res = await fetch(
-      `http://localhost:${process.env.STORAGE_PORT}/images/upload`,
-      {
-        method: "POST",
-        body: formData,
-      },
-    );
-    console.log("STORAGE_PORT", process.env.STORAGE_PORT);
+    const res = await fetch(`http://localhost:8002/images/upload`, {
+      method: "POST",
+      body: formData,
+    });
+
     const result = (await res.json()) as { imagesUrl: string[] };
     await createPost({
       title: title ?? "빈 제목",
