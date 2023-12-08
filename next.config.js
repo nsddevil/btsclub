@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "localhost",
+        hostname: "nsddevil.tplinkdns.com",
       },
     ],
   },

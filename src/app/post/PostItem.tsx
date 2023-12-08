@@ -10,9 +10,8 @@ interface PostItemProps {
 function PostItem({ post }: PostItemProps) {
   return (
     <div>
-      {post.images.length === 0 ? (
-        <div className="font-bold text-red-600">이미지가 없습니다.</div>
-      ) : (
+      {post.images.length === 0 ? undefined : (
+        // <div className="font-bold text-red-600">이미지가 없습니다.</div>
         <Link href={`/posts/${post.id}`}>
           <Card className="flex flex-col items-center justify-center overflow-hidden shadow-md">
             <Image

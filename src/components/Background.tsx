@@ -8,6 +8,7 @@ export default function Background() {
       src={heroImg}
       quality={50}
       fill
+      priority
       sizes="100vw"
       style={{
         objectFit: "cover",
