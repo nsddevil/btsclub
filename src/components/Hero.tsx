@@ -9,10 +9,11 @@ export default function Hero() {
           <h1 className="text-7xl font-bold">BTS</h1>
           <h3 className="text-3xl font-semibold">Billiard Technic Shot</h3>
           <p className="mt-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-            assumenda deserunt architecto tempore, sed, velit labore quaerat
-            debitis ad, voluptatem excepturi veritatis laboriosam? Quaerat
-            temporibus repellendus repellat voluptates adipisci similique?
+            <strong>BTS</strong>, a gathering of billiards enthusiasts, blends
+            passion for the game with intimate camaraderie. Beyond the cues and
+            balls, it&apos;s a space where shared love creates lasting memories,
+            and victories are celebrated among friends. Join us for the joy of
+            billiards and genuine companionship.
           </p>
         </div>
       </div>
