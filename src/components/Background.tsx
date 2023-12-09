@@ -1,14 +1,14 @@
 import Image from "next/image";
-import heroImg from "@/assets/hero-image.jpg";
 
 export default function Background() {
   return (
     <Image
       alt="Mountains"
-      src={heroImg}
+      src="/hero-image.jpg"
       quality={50}
       fill
-      priority
+      placeholder="blur"
+      blurDataURL="/hero-image.jpg"
       sizes="100vw"
       style={{
         objectFit: "cover",
