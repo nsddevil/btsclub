@@ -7,6 +7,7 @@ import { auth } from "@/auth";
 import CommentList from "./CommentList";
 import { Button } from "@/components/ui/button";
 import CardDeleteForm from "./CardDeleteForm";
+import PostDeleteForm from "./PostDeleteForm";
 
 interface PostsPageProps {
   params: {
@@ -18,7 +19,6 @@ export default async function PostsPage({ params: { id } }: PostsPageProps) {
   const session = await auth();
   const post = await getPostById(id);
   if (!post) notFound();
-  console.log(post);
   return (
     <div className="mt-6 min-h-[90vh] p-4">
       <div className="grid grid-cols-1 gap-4">
@@ -38,6 +38,11 @@ export default async function PostsPage({ params: { id } }: PostsPageProps) {
           </Card>
         ))}
       </div>
+      {session && (
+        <div className="mt-6">
+          <PostDeleteForm postId={post.id} />
+        </div>
+      )}
       <CommentList comments={post.comments} />
       {session && (
         <div className="mt-6">

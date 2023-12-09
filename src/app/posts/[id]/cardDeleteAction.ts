@@ -19,11 +19,11 @@ export async function deleteCard(
 ) {
   try {
     await prisma.image.delete({ where: { id: imageId } });
-    revalidatePath(`/posts/[id]`, "page");
-    redirect(`/posts/${postId}`);
   } catch (error) {
     return {
       message: "이미지 삭제 실패",
     };
   }
+  revalidatePath(`/posts/[id]`, "page");
+  redirect(`/posts/${postId}`);
 }
