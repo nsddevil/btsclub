@@ -18,7 +18,6 @@ export default async function PostsPage({ params: { id } }: PostsPageProps) {
   const session = await auth();
   const post = await getPostById(id);
   if (!post) notFound();
-  console.log(post);
   return (
     <div className="mt-6 min-h-[90vh] p-4">
       <div className="grid grid-cols-1 gap-4">
