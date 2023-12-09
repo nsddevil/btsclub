@@ -39,10 +39,13 @@ export async function addPost(prevState: PostFormState, formData: FormData) {
 
   const { title } = validateField.data;
   try {
-    const res = await fetch(`http://localhost:8002/images/upload`, {
-      method: "POST",
-      body: formData,
-    });
+    const res = await fetch(
+      `http://${process.env.IMAGE_SERVER_URL}/images/upload`,
+      {
+        method: "POST",
+        body: formData,
+      },
+    );
 
     const result = (await res.json()) as { imagesUrl: string[] };
     await createPost({

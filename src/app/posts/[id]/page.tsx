@@ -38,7 +38,7 @@ export default async function PostsPage({ params: { id } }: PostsPageProps) {
           </Card>
         ))}
       </div>
-      {session && (
+      {session && session.user.role === "ADMIN" && (
         <div className="mt-6">
           <PostDeleteForm postId={post.id} />
         </div>
