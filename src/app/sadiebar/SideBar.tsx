@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
-import SigninForm from "./SigninForm";
 import { auth } from "@/auth";
 import UserAvatar from "@/components/UserAvatar";
 import SignoutForm from "./SignoutForm";
@@ -38,7 +37,13 @@ export default async function SideBar() {
           )}
           <li>
             <SheetClose asChild>
-              {session && session.user ? <SignoutForm /> : <SigninForm />}
+              {session && session.user ? (
+                <SignoutForm />
+              ) : (
+                <Button asChild className="w-full">
+                  <Link href="/signin">SignIn</Link>
+                </Button>
+              )}
             </SheetClose>
           </li>
         </ul>

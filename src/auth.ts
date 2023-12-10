@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import prisma from "./lib/db/prisma";
 import Google from "next-auth/providers/google";
+import Kakao from "next-auth/providers/kakao";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Role } from "@prisma/client";
 export const {
@@ -25,7 +26,22 @@ export const {
         };
       },
     }),
+    Kakao({
+      clientId: process.env.AUTH_KAKAO_ID,
+      clientSecret: process.env.AUTH_KAKAO_SECRET,
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.properties.nickname,
+          image: profile.properties.profile_image,
+          role: profile.role ?? "USER",
+        };
+      },
+    }),
   ],
+  pages: {
+    signIn: "/signin",
+  },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isAdmin = auth?.user.role === "ADMIN";
