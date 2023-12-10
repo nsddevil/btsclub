@@ -44,9 +44,14 @@ export const {
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
+      const isAuth = !!auth?.user;
       const isAdmin = auth?.user.role === "ADMIN";
       const isOnAddPost = nextUrl.pathname.startsWith("/add-post");
+      const isOnSignin = nextUrl.pathname.startsWith("/signin");
       if (isOnAddPost && !isAdmin) {
+        return Response.redirect(new URL("/", nextUrl));
+      }
+      if (isAuth && isOnSignin) {
         return Response.redirect(new URL("/", nextUrl));
       }
       return true;
