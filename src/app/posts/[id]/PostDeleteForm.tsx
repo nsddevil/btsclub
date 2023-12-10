@@ -4,16 +4,23 @@ import { Button } from "@/components/ui/button";
 import { Loader2, Trash2 } from "lucide-react";
 import { useFormState, useFormStatus } from "react-dom";
 import { deletePost } from "./postActions";
+import { useRouter } from "next/navigation";
 
 interface PostDeleteFormProps {
   postId: string;
 }
 
 export default function PostDeleteForm({ postId }: PostDeleteFormProps) {
+  const router = useRouter();
   const deletePostWithId = deletePost.bind(null, postId);
   const [state, action] = useFormState(deletePostWithId, { message: "" });
   return (
-    <form action={action}>
+    <form
+      action={async (formData: FormData) => {
+        await action(formData);
+        router.replace("/");
+      }}
+    >
       <PostDeleteFormButton />
       {state?.message && (
         <p className="font-bold text-red-600">{state.message}</p>

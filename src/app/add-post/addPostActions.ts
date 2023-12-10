@@ -34,6 +34,7 @@ export async function addPost(prevState: PostFormState, formData: FormData) {
   if (!validateField.success) {
     return {
       errors: validateField.error.flatten().fieldErrors,
+      message: "필드를 확인하세요",
     };
   }
 
@@ -60,11 +61,12 @@ export async function addPost(prevState: PostFormState, formData: FormData) {
           message: "image server error",
         };
       }
-      return {
-        message: "이미지 저장 실패",
-      };
     }
+    return {
+      message: "이미지 저장 실패",
+    };
   }
-  revalidatePath("/", "page");
+  revalidatePath("/");
   redirect("/");
+  // return undefined;
 }

@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: "nsddevil.tplinkdns.com",
       },
+      {
+        hostname: "localhost",
+      },
     ],
   },
 };

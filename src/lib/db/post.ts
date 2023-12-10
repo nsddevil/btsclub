@@ -87,3 +87,14 @@ export async function getPostById(id: string) {
     throw new Error(`db: getPostById error, id: ${id}`);
   }
 }
+
+export async function deletePost(postId: string) {
+  try {
+    await prisma.post.delete({ where: { id: postId } });
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      console.log("prisma error", error);
+    }
+    throw new Error(`db: deletePost error postId: ${postId}`);
+  }
+}

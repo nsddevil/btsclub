@@ -27,7 +27,7 @@ export default async function SideBar() {
           {session?.user && session.user.role === "ADMIN" && (
             <li>
               <SheetClose asChild>
-                <Link href="/add-post" className="w-full">
+                <Link href="/add-post" className="w-full" replace>
                   <Button variant="secondary" className="w-full">
                     이미지업로드
                   </Button>
@@ -41,7 +41,9 @@ export default async function SideBar() {
                 <SignoutForm />
               ) : (
                 <Button asChild className="w-full">
-                  <Link href="/signin">SignIn</Link>
+                  <Link href="/signin" replace>
+                    SignIn
+                  </Link>
                 </Button>
               )}
             </SheetClose>

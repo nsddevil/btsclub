@@ -23,6 +23,7 @@ export default function CommentDeleteForm({
   return (
     <form action={action}>
       <CommentDeleteButton />
+      {state?.message && <p className="text-red-600">{state.message}</p>}
     </form>
   );
 }

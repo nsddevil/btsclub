@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import CommentForm from "./CommentForm";
 import { auth } from "@/auth";
 import CommentList from "./CommentList";
-import { Button } from "@/components/ui/button";
 import CardDeleteForm from "./CardDeleteForm";
 import PostDeleteForm from "./PostDeleteForm";
 

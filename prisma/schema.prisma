@@ -15,7 +15,7 @@ model Post {
   title     String
   images    Image[]
   userId    String
-  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id])
   comments  Comment[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -79,7 +79,7 @@ model Session {
 model Comment {
   id        String   @id @default(uuid())
   content   String
-  post      Post     @relation(fields: [postId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String

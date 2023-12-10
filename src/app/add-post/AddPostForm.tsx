@@ -11,7 +11,7 @@ import { Loader2 } from "lucide-react";
 export default function AddPostForm() {
   const [state, action] = useFormState(addPost, {
     errors: {},
-    message: undefined,
+    message: "",
   });
   return (
     <div>
@@ -19,21 +19,21 @@ export default function AddPostForm() {
         <div className="flex flex-col gap-2">
           <Label htmlFor="title">제목</Label>
           <Input type="text" id="title" name="title" placeholder="Title" />
-          {state.errors?.title &&
-            state.errors.title.map((err) => (
+          {state?.errors?.title &&
+            state?.errors.title.map((err) => (
               <p key={err} className="my-2 text-sm text-red-600">
                 {err}
               </p>
             ))}
         </div>
         <UploadInput />
-        {state.errors?.images &&
-          state.errors.images.map((err) => (
+        {state?.errors?.images &&
+          state?.errors.images.map((err) => (
             <p key={err} className="my-2 text-sm text-red-600">
               {err}
             </p>
           ))}
-        {state.message && <p className="text-red-600">{state.message}</p>}
+        {state?.message && <p className="text-red-600">{state.message}</p>}
         <AddPostFormButton />
       </form>
     </div>

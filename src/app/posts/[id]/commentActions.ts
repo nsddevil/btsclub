@@ -2,7 +2,7 @@
 
 import { CommentsWithAuth } from "@/lib/db/post";
 import prisma from "@/lib/db/prisma";
-import { Comment } from "@prisma/client";
+import { Comment, Prisma } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -70,6 +70,11 @@ export async function deleteComment(
   try {
     await prisma.comment.delete({ where: { id: comment.id } });
   } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      return {
+        message: error.message,
+      };
+    }
     return {
       message: "Database Error: deleteComment",
     };
